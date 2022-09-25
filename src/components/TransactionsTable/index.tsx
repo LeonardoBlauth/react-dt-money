@@ -9,6 +9,7 @@ export function TransactionTable() {
       .get('transactions')
       .then(response => console.log(response.data))
   }, [])
+  
   return (
     <Container>
       <table>
