@@ -1,13 +1,13 @@
 import { useEffect } from "react";
-import axios from "axios";
+import { api } from "../../services/api";
 
 import { Container } from "./styles";
 
 export function TransactionTable() {
   useEffect(() => {
-    axios
-      .get('http://localhost:3000/api/transactions')
-      .then(({data}) => console.log(data))
+    api
+      .get('transactions')
+      .then(response => console.log(response.data))
   }, [])
   return (
     <Container>
