@@ -1,4 +1,7 @@
 import Modal from 'react-modal';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as zod from 'zod';
 
 import incomeImg from '../../assets/income.svg'
 import outcomeImg from '../../assets/outcome.svg'
@@ -6,14 +9,47 @@ import closeImg from '../../assets/close.svg';
 
 import { Container, TransactionTypeContainer, RadioBox } from "./styles";
 import { useState } from 'react';
+import { api } from '../../services/api';
 
 interface NewTransactionModalProps { 
   isOpen: boolean;
   onRequestClose: () => void;
 }
 
+const newTransactionFormValidationSchema = zod.object({
+  title: zod.string().trim().min(1, 'O título da transação precisa conter pelo menos 1 carácter'),
+  amount: zod.number(),
+  category: zod.string().min(1, 'A categoria da transação precisa conter pelo menos 1 carácter'),
+})
+
+type NewTransactionFormData = zod.infer<typeof newTransactionFormValidationSchema>
+
 export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionModalProps) {
   const [type, setType] = useState('deposit');
+
+  const newTransactionForm = useForm<NewTransactionFormData>({
+    resolver: zodResolver(newTransactionFormValidationSchema),
+    defaultValues: {
+      title: '',
+      amount: 0,
+      category: ''
+    },
+  })
+
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+  } = newTransactionForm
+  
+  function handleCreateNewTransaction(data: NewTransactionFormData) {
+    const newTransaction = { ...data, type };
+
+    api.post('/transactions', newTransaction)
+
+    reset()
+  }
 
   return (
     <Modal
@@ -30,16 +66,20 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
         <img src={closeImg} alt="Fechar modal" />
       </button>
 
-      <Container>
+      <Container onSubmit={handleSubmit(handleCreateNewTransaction)}>
         <h2>Cadastrar Transação</h2>
 
         <input
+          className={errors.title ? 'with-error' : ''}
           placeholder="Título"
+          {...register('title')}
         />
 
         <input
           type="number"
+          className={errors.amount ? 'with-error' : ''}
           placeholder="Valor"
+          {...register('amount', { valueAsNumber: true })}
         />
 
         <TransactionTypeContainer>
@@ -58,6 +98,7 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
             onClick={() => setType('withdraw')}
             isActive={type === 'withdraw'}
             activeColor="red"
+
           >
             <img src={outcomeImg} alt="Saída" />
             <span>Saída</span>
@@ -66,6 +107,8 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
         
         <input
           placeholder="Categoria"
+          className={errors.category ? 'with-error' : ''}
+          {...register('category')}
         />
 
         <button type="submit">

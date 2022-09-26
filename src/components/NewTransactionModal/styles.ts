@@ -26,6 +26,14 @@ export const Container = styled.form`
     & + input {
       margin-top: 1rem;
     }
+
+    &.with-error {
+      border: 2px solid var(--red);
+
+      &:focus {
+        outline: 0;
+      }
+    }
   }
 
   button[type="submit"] {
