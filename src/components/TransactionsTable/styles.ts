@@ -125,7 +125,7 @@ export const Card = styled.div`
   border-radius: 8px;
   color: var(--text-title);
 
-  &+ div {
+  & + div {
     margin-top: 0.5rem;
   }
 
