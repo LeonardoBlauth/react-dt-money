@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { api } from "../../services/api";
+import { useTransactions } from "../../hooks/useTransactions";
 
 import { Container } from "./styles";
 
@@ -9,17 +8,16 @@ interface Transaction {
   amount: number;
   type: string;
   category: string;
-  createdAt: string;
+  createdAt: Date | string;
 }
 
 export function TransactionTable() {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const { transactions } = useTransactions();
 
-  useEffect(() => {
-    api
-      .get('transactions')
-      .then(response => setTransactions(response.data.transactions))
-  }, [])
+  function getAmount(transaction: Transaction) {
+    return transaction.amount > 0 && transaction.type === 'withdraw' ? - transaction.amount : transaction.amount
+  }
+
   
   return (
     <Container>
@@ -41,7 +39,7 @@ export function TransactionTable() {
                 {new Intl.NumberFormat('pt-BR', {
                   style: 'currency',
                   currency: 'BRL'
-                }).format(transaction.amount)}
+                }).format(getAmount(transaction))}
                 </td>
                 <td>{transaction.category}</td>
                 <td>

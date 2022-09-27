@@ -1,16 +1,16 @@
+import { useState } from 'react';
 import Modal from 'react-modal';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as zod from 'zod';
-import { v4 as uuidv4 } from "uuid";
+
+import { useTransactions } from '../../hooks/useTransactions';
 
 import incomeImg from '../../assets/income.svg'
 import outcomeImg from '../../assets/outcome.svg'
 import closeImg from '../../assets/close.svg';
 
 import { Container, TransactionTypeContainer, RadioBox } from "./styles";
-import { useState } from 'react';
-import { api } from '../../services/api';
 
 interface NewTransactionModalProps { 
   isOpen: boolean;
@@ -28,6 +28,8 @@ const newTransactionFormValidationSchema = zod.object({
 type NewTransactionFormData = zod.infer<typeof newTransactionFormValidationSchema>
 
 export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionModalProps) {
+  const { createNewTransaction } = useTransactions();
+
   const [type, setType] = useState('deposit');
 
   const newTransactionForm = useForm<NewTransactionFormData>({
@@ -46,12 +48,15 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
     formState: { errors },
   } = newTransactionForm
   
-  function handleCreateNewTransaction(data: NewTransactionFormData) {
-    const newTransaction = { id: uuidv4(), ...data, type, createdAt: new Date() };
+  async function handleCreateNewTransaction(data: NewTransactionFormData) {
+    const newTransaction = { ...data, type };
+    
+    await createNewTransaction(newTransaction);
 
-    api.post('/transactions', newTransaction)
+    reset();
+    setType('deposit');
 
-    reset()
+    onRequestClose();
   }
 
   return (
