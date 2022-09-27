@@ -19,7 +19,9 @@ interface NewTransactionModalProps {
 
 const newTransactionFormValidationSchema = zod.object({
   title: zod.string().trim().min(1, 'O título da transação precisa conter pelo menos 1 carácter'),
-  amount: zod.number(),
+  amount: zod.number({
+    invalid_type_error: "O campo valor deve ser um número"
+  }),
   category: zod.string().min(1, 'A categoria da transação precisa conter pelo menos 1 carácter'),
 })
 
@@ -32,7 +34,7 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
     resolver: zodResolver(newTransactionFormValidationSchema),
     defaultValues: {
       title: '',
-      amount: 0,
+      amount: 0.00,
       category: ''
     },
   })
