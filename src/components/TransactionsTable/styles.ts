@@ -20,6 +20,7 @@ export const Container = styled.div`
       border: 0;
       background-color: var(--shape);
       color: var(--text-body);
+      text-overflow: ellipsis;
 
       &:first-child{
         border-top-left-radius: 8px;
@@ -31,6 +32,15 @@ export const Container = styled.div`
       &:last-child{
         border-top-right-radius: 8px;
         border-bottom-right-radius: 8px;
+
+        padding: 1rem;
+
+        div {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
       }
 
       &.deposit {
@@ -69,6 +79,23 @@ export const Container = styled.div`
     }
   }
 
+  .trash-button {
+            background: transparent;
+            border: 0;
+  
+            transition: color 0.2s;
+           
+            svg {
+              display: flex;
+              align-items: center;
+              margin-left: 1rem;
+            
+              &:hover {
+                color: var(--red);
+              }
+            }
+          }
+
   .without-transactions {
     height: 30rem;
 
@@ -106,6 +133,10 @@ export const Card = styled.div`
     display: flex;
     flex-direction: column;
     color: var(--text-title);
+
+    div {
+      margin: 0rem;
+    }
 
     strong {
       margin-top: 0.125rem;

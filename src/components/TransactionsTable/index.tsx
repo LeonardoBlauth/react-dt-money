@@ -1,3 +1,4 @@
+import { Trash } from "phosphor-react";
 import { useTransactions } from "../../hooks/useTransactions";
 
 import { Card, Container } from "./styles";
@@ -12,7 +13,7 @@ interface Transaction {
 }
 
 export function TransactionTable() {
-  const { transactions } = useTransactions();
+  const { transactions, deleteTransaction } = useTransactions();
 
   function getAmount(transaction: Transaction) {
     return transaction.amount > 0 && transaction.type === "withdraw"
@@ -46,9 +47,17 @@ export function TransactionTable() {
                   </td>
                   <td>{transaction.category}</td>
                   <td>
-                    {new Intl.DateTimeFormat("pt-BR").format(
-                      new Date(transaction.createdAt)
-                    )}
+                      <div>
+                      {new Intl.DateTimeFormat("pt-BR").format(
+                        new Date(transaction.createdAt)
+                      )}
+                      <button
+                        className="trash-button"
+                        onMouseDown={() => deleteTransaction(transaction)}
+                      >
+                        <Trash size={20} />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -64,7 +73,15 @@ export function TransactionTable() {
             return (
               <Card key={transaction.id}>
                 <header>
-                  {transaction.title}
+                  <div>
+                    {transaction.title}
+                    <button
+                      className="trash-button"
+                      onMouseDown={() => deleteTransaction(transaction)}
+                    >
+                      <Trash size={18} />
+                    </button>
+                  </div>
                   <strong className={transaction.amount < 0 ? 'withdraw' : 'deposit'}>
                     {new Intl.NumberFormat("pt-BR", {
                       style: "currency",
