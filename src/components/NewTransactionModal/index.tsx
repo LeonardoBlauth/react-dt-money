@@ -45,7 +45,7 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
     handleSubmit,
     register,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = newTransactionForm
   
   async function handleCreateNewTransaction(data: NewTransactionFormData) {
@@ -119,7 +119,7 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
           {...register('category')}
         />
 
-        <button type="submit">
+        <button type="submit" disabled={isSubmitting}>
           Cadastrar
         </button>
       </Container>

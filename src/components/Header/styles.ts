@@ -14,6 +14,9 @@ export const Content = styled.div`
   justify-content: space-between;
 
   button {
+    display: flex;
+    align-items: center;
+
     font-size: 1rem;
     color: #FFF;
     background-color: var(--blue-light);
@@ -26,6 +29,19 @@ export const Content = styled.div`
 
     &:hover {
       filter: brightness(0.9);
+    }
+
+    svg {
+      margin-left: 0.25rem;
+    }
+  }
+
+  @media (max-width: 660px) {
+    button {
+      padding: 0 1.5rem;
+      span {
+        display: none;
+      }
     }
   }
 `

@@ -36,4 +36,24 @@ export const Container = styled.div`
     background: var(--red);
     color: #FFF;
   }
+
+  @media (max-width: 850px) {
+    grid-template-columns: repeat(2, 1fr);
+
+    .total {
+      display: none;
+    }
+  }
+
+  @media (max-width: 660px) {
+    grid-template-columns: repeat(1, 1fr);
+
+    .deposits, .withdraws {
+      display: none;
+    }
+
+    .total {
+      display: block;
+    }
+  }
 `

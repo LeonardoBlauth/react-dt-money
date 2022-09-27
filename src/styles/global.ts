@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   :root {
@@ -14,9 +14,10 @@ export const GlobalStyle = createGlobalStyle`
     --blue: #5429cc;
 
     --green: #33cc95;
+    --green-dark: #12A454;
 
     --red: #e52e4d;
-
+    --red-dark: #E62E4D;
   }
 
   * {
@@ -94,4 +95,15 @@ export const GlobalStyle = createGlobalStyle`
       filter: brightness(0.8);
     }
   }
-`
+
+  @media (max-width: 660px) {
+    .react-modal-overlay {
+      align-items: flex-end;
+    }
+    
+    .react-modal-content {
+      max-width: none;
+      border-radius: 16px;
+    }
+  }
+`;
