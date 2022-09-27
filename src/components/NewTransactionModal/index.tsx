@@ -2,6 +2,7 @@ import Modal from 'react-modal';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as zod from 'zod';
+import { v4 as uuidv4 } from "uuid";
 
 import incomeImg from '../../assets/income.svg'
 import outcomeImg from '../../assets/outcome.svg'
@@ -44,7 +45,7 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
   } = newTransactionForm
   
   function handleCreateNewTransaction(data: NewTransactionFormData) {
-    const newTransaction = { ...data, type };
+    const newTransaction = { id: uuidv4(), ...data, type };
 
     api.post('/transactions', newTransaction)
 
