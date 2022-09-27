@@ -45,7 +45,7 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
   } = newTransactionForm
   
   function handleCreateNewTransaction(data: NewTransactionFormData) {
-    const newTransaction = { id: uuidv4(), ...data, type };
+    const newTransaction = { id: uuidv4(), ...data, type, createdAt: new Date() };
 
     api.post('/transactions', newTransaction)
 
