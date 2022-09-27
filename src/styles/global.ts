@@ -103,7 +103,10 @@ export const GlobalStyle = createGlobalStyle`
     
     .react-modal-content {
       max-width: none;
-      border-radius: 16px;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
     }
   }
 `;

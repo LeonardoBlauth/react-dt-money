@@ -82,7 +82,7 @@ export function TransactionTable() {
                       <Trash size={18} />
                     </button>
                   </div>
-                  <strong className={transaction.amount < 0 ? 'withdraw' : 'deposit'}>
+                  <strong className={getAmount(transaction) < 0 ? 'withdraw' : 'deposit'}>
                     {new Intl.NumberFormat("pt-BR", {
                       style: "currency",
                       currency: "BRL",

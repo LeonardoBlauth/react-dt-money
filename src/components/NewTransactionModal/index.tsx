@@ -87,6 +87,7 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
           type="number"
           className={errors.amount ? 'with-error' : ''}
           placeholder="Valor"
+          step={0.05}
           {...register('amount', { valueAsNumber: true })}
         />
 

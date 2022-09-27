@@ -56,6 +56,15 @@ export const Container = styled.form`
       filter: brightness(0.9);
     }
   }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
 `;
 
 export const TransactionTypeContainer = styled.div`
