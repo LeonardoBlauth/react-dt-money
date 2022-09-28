@@ -35,8 +35,8 @@ To improve the application I use zod to validate inputs. I also add a way to del
 <h1 align="center">
   <img src="https://imgur.com/wcq4aYs.png" alt="DT Money - Interface" style="height: 70%; width: 70%;" />
   <img src="https://imgur.com/I7JS6Zn.png" alt="DT Money - Modal" style="height: 70%; width: 70%;" />
-  <img src="https://imgur.com/D4cTDrX.png" alt="DT MONEY - Interface responsive" style="height: 70%; width: 70%;" />
-  <img src="https://imgur.com/sctlb30.png" alt="DT Money - Modal Responsive" style="height: 70%; width: 70%;" />
+  <img src="https://imgur.com/D4cTDrX.png" alt="DT MONEY - Interface responsive"/>
+  <img src="https://imgur.com/sctlb30.png" alt="DT Money - Modal Responsive" />
 </h1>
 
 <br />
