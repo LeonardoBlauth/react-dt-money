@@ -80,6 +80,7 @@ export const Container = styled.div`
   }
 
   .trash-button {
+            color: var(--text-body);
             background: transparent;
             border: 0;
   
