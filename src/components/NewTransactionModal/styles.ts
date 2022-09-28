@@ -29,6 +29,7 @@ export const Container = styled.form`
 
     &.with-error {
       border: 2px solid var(--red);
+      border-radius: 4px;
 
       &:focus {
         outline: 0;
