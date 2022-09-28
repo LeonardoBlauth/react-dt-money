@@ -10,7 +10,7 @@
 
 ## 💻 Overview
 
-**[DT Money](https://react-ignite-timer-web-yysh.vercel.app)** is an application which you can record your transactions and receive visual feedback about them. This project was developed during **[Rocketseat's Ignite](https://github.com/Rocketseat)** boot camp on 2021 React trail, under the guidance of **[Diego Fernandes](https://github.com/diego3g)**.
+DT Money is an application which you can record your transactions and receive visual feedback about them. This project was developed during **[Rocketseat's Ignite](https://github.com/Rocketseat)** boot camp on 2021 React trail, under the guidance of **[Diego Fernandes](https://github.com/diego3g)**.
 
 ## :star: Extras
 
@@ -33,11 +33,10 @@ To improve the application I use zod to validate inputs. I also add a way to del
 ## :camera: Screenshots
 
 <h1 align="center">
-  <img src="https://imgur.com/oeOLnTl.png" alt="Ignite Timer - Interface" style="height: 70%; width: 70%;" />
-  <img src="https://imgur.com/RJuO9fD.png" alt="Ignite Timer - Interface With Time" style="height: 70%; width: 70%;" />
-  <img src="https://imgur.com/gqFDrqK.png" alt="Ignite Timer - History Interface" style="height: 70%; width: 70%;" />
-  <img src="https://imgur.com/IwRRJCu.png" alt="Ignite Timer - History Interface Without Data" style="height: 70%; width: 70%;" />
-  <img src="https://imgur.com/5JK8Ugf.png" alt="Ignite Timer - History Interface Responsive" style="width: 40%;" />
+  <img src="https://imgur.com/wcq4aYs.png" alt="DT Money - Interface" style="height: 70%; width: 70%;" />
+  <img src="https://imgur.com/I7JS6Zn.png" alt="DT Money - Modal" style="height: 70%; width: 70%;" />
+  <img src="https://imgur.com/D4cTDrX.png" alt="DT MONEY - Interface responsive" style="height: 70%; width: 70%;" />
+  <img src="https://imgur.com/sctlb30.png" alt="DT Money - Modal Responsive" style="height: 70%; width: 70%;" />
 </h1>
 
 <br />
